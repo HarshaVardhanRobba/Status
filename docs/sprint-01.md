@@ -55,5 +55,12 @@ Secrets: none in repo. Keys stay in gitignored .env.local; Trigger.dev CLI creds
 pwd at what/, ls shows three entries, cd Web-base, pwd + ls again, then git status (on sprint-01/w1d1-docs, README modified, docs/ untracked) and git log -1 --oneline (a850cf3 updated readme). Ran before the commit, so log tip still points where main points.
 Doc explains reading: ls hides dotfiles, node_modules/ absent (no npm install yet), git status answers three questions at once, docs/ collapses to one line because nothing inside tracked yet.
 
+### 9 — New repository
+Split into its own repo: `HarshaVardhanRobba/Status`, path `Week 1 D 1/Status-repo`.
+Files copied from Web-base working tree, fresh git history, no submodule or
+remote link back to the original repo, which stays untouched on its own branch
+sprint-01/w1d1-docs. Reason: keep this track separate from the Web-base repo and
+its PR flow. Initial commit 5095882, pushed to origin/main.
+
 ### 10 — Live-explain script
 Changed one line in README Layout block, adding docs/ next to drizzle/ and worklog/. Level 1 because it documents a directory that now exists — no source, no config, no dependency touched, build and runtime cannot change. Stack is TypeScript on Next.js 16 App Router with React 19, Clerk for auth and organizations, Neon Postgres through Drizzle, Trigger.dev v4 for background runs, Browserbase for the browser, React Flow for canvas, Vitest for tests. Runs as two processes: npm run dev, and npx trigger.dev@latest dev in second terminal.

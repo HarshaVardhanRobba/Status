@@ -5,6 +5,13 @@ organization owns a set of workflows; a workflow opens in a node editor backed b
 React Flow, and runs execute as durable Trigger.dev tasks that drive a cloud
 browser while their progress streams back into the UI in realtime.
 
+## Repository
+
+This checkout is hosted at
+[HarshaVardhanRobba/Status](https://github.com/HarshaVardhanRobba/Status), split
+out from the original `Web-base` repository as its own history, with no
+submodule or remote link back to it.
+
 ## Stack
 
 | Concern | Choice |
