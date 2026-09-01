@@ -1,0 +1,61 @@
+import {and, eq, desc} from "drizzle-orm";
+
+// @/lib/db imports "server-only", which throws inside the Trigger.dev worker.
+// The client module is the same Drizzle instance without that guard, and this
+// file is read by both Next server code and the run-workflow task.
+import {db} from "@/lib/db/client";
+import {workflows, WorkflowGraph} from "@/lib/db/schema";
+import { validateGraph } from "@/workflows/lib/graphvalidator";
+
+export async function saveWorkflowGraph({
+orgId,
+id,
+graph,
+} : {
+  orgId: string
+  id: string
+  graph: WorkflowGraph
+}) {
+  const problems = validateGraph(graph)
+  if (problems. length > 0) throw new Error(problems.join(" "))
+  await db
+    .update(workflows)
+    .set({ graph, updatedAt: new Date() })
+    .where(and(eq(workflows.id, id), eq(workflows.orgId, orgId)))
+}
+
+export function listWorkflows(orgId: string) {
+  return db
+    .select()
+    .from(workflows)
+    .where(and(eq(workflows.orgId, orgId)))
+    .orderBy(desc(workflows.createdAt));
+}
+
+export async function getWorkflow(orgId: string, id: string) {
+  const [workflow] = await db
+    .select()
+    .from(workflows)
+    .where(and(eq(workflows.id, id), eq(workflows.orgId, orgId)))
+    .limit(1);
+
+  return workflow;
+}
+
+export async function createWorkflow(orgId: string, name: string) {
+  const [workflow] = await db
+    .insert(workflows)
+    .values({orgId, name})
+    .returning();
+
+  return workflow;
+}
+
+export async function deleteWorkflow(orgId: string, id: string) {
+  const [workflow] = await db
+    .delete(workflows)
+    .where(and(eq(workflows.id, id), eq(workflows.orgId, orgId)))
+    .returning();
+
+  return workflow;
+}
