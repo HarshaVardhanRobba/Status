@@ -58,6 +58,10 @@ Java (`redhat.java`, the `vscjava.*` pack, `oracle.oracle-java`), Python
 `rodrigovallades.es7-react-js-snippets`). They are listed for completeness; nothing on
 this project depends on them.
 
+## One-command setup
+
+`npm run setup` is the one-command install for a second machine: it runs `npm install`, then `scripts/setup-env.mjs`, which creates `.env.local` from `.env.example` if it does not already exist. 
+
 ## Formatter, linter, test runner
 
 | Tool | Command | Config |

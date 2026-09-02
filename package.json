@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "setup": "npm install && node scripts/setup-env.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/check-trigger.mjs",
     "build": "next build",
