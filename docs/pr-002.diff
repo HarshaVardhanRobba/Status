@@ -1,0 +1,249 @@
+diff --git a/docs/standup-w1.md b/docs/standup-w1.md
+index 39ebee6..b3b6ec2 100644
+--- a/docs/standup-w1.md
++++ b/docs/standup-w1.md
+@@ -4,14 +4,20 @@
+ - **Today:** Clone the `Web-base` product repo, name the stack and domain in `docs/sprint-01.md`, write the sprint backlog, and ship one Level 1 change through a branch and a pull request.
+ - **Blocker:** None. Git identity was unset on this machine and is now configured locally in this repo.
+
+-# Standup - Week 1, Day 2 (2026-09-01)
++# Standup - Week 1, Day 2 (2026-09-02)
+
+ - **Yesterday:** Cloned Web-base, named stack and domain in docs/sprint-01.md, wrote sprint backlog, shipped Level 1 change through branch and PR.
+ - **Today:** Finish review comments on Day 1 PR if still open, write docs/slice-map.md, update docs/ide.md with formatter/linter/test-runner notes, run Linux practice commands into docs/linux-w1.md, live walkthrough plus Q&A.
+ - **Blocker:** None yet.
+
+-# Standup - Week 1, Day 3 (2026-09-01)
++# Standup - Week 1, Day 3 (2026-09-03)
+
+ - **Yesterday:** Wrote docs/slice-map.md, updated docs/ide.md with formatter/linter/test-runner notes, checked Day 1 PR (open, no comments), moved W1D2 work to Status repo.
+ - **Today:** Push Level 1 PR to merge-ready, start one-command setup and document it, write docs/ticket-level2.md for a Level 2 task, Linux practice into docs/linux-w1.md, live explain of ticket and Level 1 diff.
+ - **Blocker:** None yet.
++
++# Standup - Week 1, Day 4 (2026-09-04)
++
++- **Yesterday:** Wrote docs/ticket-level2.md for the Level 2 sub-task (interpolate.ts bug), introduced the bug in workflows/lib/interpolate.ts, then fixed it back.
++- **Today:** Make the smallest possible change matching the Level 2 ticket, run existing checks (or write a hand-check doc if no test suite runs), open a PR for the change, Linux practice into docs/linux-w1.md.
++- **Blocker:** None yet.
+diff --git a/workflows/lib/interpolate.ts b/workflows/lib/interpolate.ts
+index b93cbf0..a27942b 100644
+--- a/workflows/lib/interpolate.ts
++++ b/workflows/lib/interpolate.ts
+@@ -19,7 +19,7 @@ function getByPath(root: unknown, path: string): unknown {
+   if (!parts) return undefined
+
+   return parts.reduce<unknown>((value, segment) => {
+-    if (value === null || value === undefined) return undefined
++    if (value === null && value === undefined) return undefined
+
+     return (value as Record<string, unknown>)[segment]
+   }, root)
+diff --git a/docs/hand-check-level2.md b/docs/hand-check-level2.md
+new file mode 100644
+index 0000000..ca7f75f
+--- /dev/null
++++ b/docs/hand-check-level2.md
+@@ -0,0 +1,64 @@
++# Hand check — Level 2 ticket (interpolate.ts)
++
++## Steps
++
++1. Open `workflows/lib/interpolate.ts` and read the `stringify()` helper
++   (around line 31-37) and its surrounding comments.
++2. Open `workflows/lib/interpolate.test.ts` and read the case named
++   "stringifies an object result as JSON" (line 38-42).
++3. Trace `stringify()` by hand for an object input, such as
++   `{ url: "https://a.com" }`: it hits the `typeof value === "object"` check
++   and should return `JSON.stringify(value)`.
++4. Run `npx vitest run workflows/lib/interpolate.test.ts` from the repo root.
++5. Confirm every test in that file passes, in particular the object case.
++
++## Expected result
++
++All 9 tests in `workflows/lib/interpolate.test.ts` pass, including
++"stringifies an object result as JSON", which expects
++`interpolate("{{ open }}", { open: { url: "https://a.com" } })` to equal
++`JSON.stringify({ url: "https://a.com" })`.
++
++## Actual result
++
++All 9 tests passed. `stringify()` uses `typeof value === "object"` to route
++objects and arrays to `JSON.stringify`, matching the ticket goal.
++
++---
++
++## Automated test runs (Do 3)
++
++Two existing test files were run directly with vitest instead of by hand,
++since both already cover their target files.
++
++### workflows/tasks/run-workflow.test.ts
++
++Command: `npx vitest run workflows/tasks/run-workflow.test.ts`
++
++Result: 1 test file passed, 2 tests passed.
++
++- "runs connected nodes in dependency order and interpolates upstream
++  output" — passed. `open-url` ran before `extract`, and the extract node's
++  `instruction` field received the interpolated upstream URL.
++- "marks a step failed and stops the run when a node executor throws" —
++  passed. The run rejected with the thrown error, the downstream node never
++  ran, and the browser close ran anyway in the `finally` block.
++
++### workflows/lib/graphvalidator.test.ts
++
++Command: `npx vitest run workflows/lib/graphvalidator.test.ts`
++
++Result: 1 test file passed, 5 tests passed.
++
++- "passes a graph with one trigger, one edge, no cycle" — passed.
++- "flags zero triggers" — passed.
++- "flags two triggers" — passed.
++- "flags no edges" — passed.
++- "flags a cycle" — passed.
++
++### Combined run
++
++Command:
++`npx vitest run workflows/tasks/run-workflow.test.ts workflows/lib/graphvalidator.test.ts`
++
++Result: 2 test files passed, 7 tests passed, 0 failed. Duration ~342ms.
+diff --git a/workflows/tasks/run-workflow.test.ts b/workflows/tasks/run-workflow.test.ts
+new file mode 100644
+index 0000000..d723f2e
+--- /dev/null
++++ b/workflows/tasks/run-workflow.test.ts
+@@ -0,0 +1,120 @@
++import { beforeEach, describe, expect, it, vi } from "vitest"
++
++const metadataStore: Record<string, unknown> = {}
++
++// task() only needs to hand back {id, run} so the test can call .run directly,
++// the way the real runtime invokes it. logger and metadata are no-ops that
++// record what was set, since nothing here needs the real Trigger.dev backend.
++vi.mock("@trigger.dev/sdk", () => ({
++  task: (options: unknown) => options,
++  logger: { log: vi.fn(), error: vi.fn() },
++  metadata: {
++    set: vi.fn((key: string, value: unknown) => {
++      metadataStore[key] = value
++    }),
++    flush: vi.fn(async () => undefined),
++  },
++}))
++
++const getStagehand = vi.fn(async () => ({}) as never)
++const closeBrowser = vi.fn(async () => undefined)
++
++vi.mock("../lib/browserbase", () => ({
++  createBrowser: () => ({
++    getStagehand,
++    sessionId: () => undefined,
++    close: closeBrowser,
++  }),
++  sessionUrl: (id: string) => `https://www.browserbase.com/sessions/${id}`,
++}))
++
++const openUrlExecutor = vi.fn(async () => ({ url: "https://a.com" }))
++const extractExecutor = vi.fn(async ({ values }: { values: Record<string, string> }) => ({
++  text: `extracted:${values.instruction}`,
++}))
++
++vi.mock("../nodes/node-executors", () => ({
++  nodeExecutors: {
++    "open-url": openUrlExecutor,
++    extract: extractExecutor,
++  },
++}))
++
++const getWorkflow = vi.fn()
++
++vi.mock("../test-data-lib/data", () => ({
++  getWorkflow: (...args: unknown[]) => getWorkflow(...args),
++}))
++
++const { runWorkflowTask } = await import("./run-workflow")
++
++function makeNode(id: string, type: "open-url" | "extract", values: Record<string, string>) {
++  return {
++    id,
++    type: "step",
++    position: { x: 0, y: 0 },
++    data: { type, kind: "action", title: id, values },
++  }
++}
++
++describe("runWorkflowTask", () => {
++  beforeEach(() => {
++    vi.clearAllMocks()
++  })
++
++  it("runs connected nodes in dependency order and interpolates upstream output", async () => {
++    getWorkflow.mockResolvedValue({
++      name: "test workflow",
++      graph: {
++        nodes: [
++          makeNode("open", "open-url", { url: "https://a.com" }),
++          makeNode("extract", "extract", {
++            instruction: "read {{ open.url }}",
++          }),
++        ],
++        edges: [{ id: "e1", source: "open", target: "extract" }],
++      },
++    })
++
++    const result = await runWorkflowTask.run({
++      workflowId: "w1",
++      orgId: "org1",
++    })
++
++    expect(openUrlExecutor.mock.invocationCallOrder[0]).toBeLessThan(
++      extractExecutor.mock.invocationCallOrder[0]
++    )
++    expect(extractExecutor).toHaveBeenCalledWith(
++      expect.objectContaining({
++        values: { instruction: "read https://a.com" },
++      })
++    )
++    expect(result.steps.map((s) => [s.id, s.status])).toEqual([
++      ["open", "done"],
++      ["extract", "done"],
++    ])
++    expect(closeBrowser).toHaveBeenCalled()
++  })
++
++  it("marks a step failed and stops the run when a node executor throws", async () => {
++    getWorkflow.mockResolvedValue({
++      name: "test workflow",
++      graph: {
++        nodes: [
++          makeNode("open", "open-url", { url: "https://a.com" }),
++          makeNode("extract", "extract", { instruction: "read it" }),
++        ],
++        edges: [{ id: "e1", source: "open", target: "extract" }],
++      },
++    })
++
++    openUrlExecutor.mockRejectedValueOnce(new Error("boom"))
++
++    await expect(
++      runWorkflowTask.run({ workflowId: "w1", orgId: "org1" })
++    ).rejects.toThrow("boom")
++
++    expect(extractExecutor).not.toHaveBeenCalled()
++    expect(closeBrowser).toHaveBeenCalled()
++  })
++})
+diff --git a/workflows/lib/interpolate.ts b/workflows/lib/interpolate.ts
+index a27942b..b93cbf0 100644
+--- a/workflows/lib/interpolate.ts
++++ b/workflows/lib/interpolate.ts
+@@ -19,7 +19,7 @@ function getByPath(root: unknown, path: string): unknown {
+   if (!parts) return undefined
+
+   return parts.reduce<unknown>((value, segment) => {
+-    if (value === null && value === undefined) return undefined
++    if (value === null || value === undefined) return undefined
+
+     return (value as Record<string, unknown>)[segment]
+   }, root)
