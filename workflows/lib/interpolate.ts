@@ -19,7 +19,7 @@ function getByPath(root: unknown, path: string): unknown {
   if (!parts) return undefined
 
   return parts.reduce<unknown>((value, segment) => {
-    if (value === null || value === undefined) return undefined
+    if (value === null && value === undefined) return undefined
 
     return (value as Record<string, unknown>)[segment]
   }, root)
