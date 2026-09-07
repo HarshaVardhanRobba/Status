@@ -1,5 +1,8 @@
 # Retro — Week 1
 
+_W1D5 Do 5 red-flag check: this line proves the Day 1 git loop
+(branch, small change, commit, push, PR) still works standalone._
+
 ## Keep
 
 - Standup pattern (Yesterday/Today/Blocker), same three lines every day,
