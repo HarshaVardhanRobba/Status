@@ -1,65 +1,32 @@
-# Shell log - Week 1
+# REPO OUTPUTS TO COMMANDS
 
-Run in Git Bash on Windows 11, on branch `sprint-01/w1d1-docs`, before the sprint
-documentation was committed. Paths are Git Bash style, so `C:\` appears as `/c/`.
+(base) PS C:\Users\robba\OneDrive\Desktop\Status> pwd
 
-## Where I started
+Path                                  
+----                                  
+C:\Users\robba\OneDrive\Desktop\Status
 
-```console
-$ pwd
-/c/Users/robba/OneDrive/Desktop/what
 
-$ ls
-Web-base
-Week 1 D 1
-Week 2 D 2
-```
+(base) PS C:\Users\robba\OneDrive\Desktop\Status> ls 
 
-## Into the repository
 
-```console
-$ cd Web-base
+    Directory: C:\Users\robba\OneDrive\Desktop\Status
 
-$ pwd
-/c/Users/robba/OneDrive/Desktop/what/Web-base
 
-$ ls
-AGENTS.md
-CLAUDE.md
-README.md
-app
-components
-components.json
-docs
-drizzle
-drizzle.config.ts
-eslint.config.mjs
-hooks
-lib
-liveblocks.config.ts
-next.config.ts
-package-lock.json
-package.json
-postcss.config.mjs
-proxy.ts
-public
-removed-code.txt
-scripts
-skills-lock.json
-src
-trigger.config.ts
-tsconfig.json
-vitest.config.ts
-workflows
-worklog
-```
+Mode                 LastWriteTime         Length Name               
+----                 -------------         ------ ----               
+d-----          9/4/2026   9:54 AM                Status-repo        
+d-----          9/1/2026   3:48 PM                Web-base           
 
-`ls` hides dotfiles by default, so `.gitignore`, `.prettierrc`, `.claude/` and the
-rest of the dot-prefixed entries are not in that listing. `ls -a` shows them.
-`node_modules/` is absent because `npm install` had not been run yet at this point.
 
-## Repository state
+(base) PS C:\Users\robba\OneDrive\Desktop\Status> cd status-repo
+(base) PS C:\Users\robba\OneDrive\Desktop\Status\status-repo> git status
+On branch main
+Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
 
+nothing to commit, working tree clean
+(base) PS C:\Users\robba\OneDrive\Desktop\Status\status-repo> git log -1 --oneline
 ```console
 $ git status
 On branch sprint-01/w1d1-docs
