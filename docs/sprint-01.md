@@ -64,3 +64,6 @@ its PR flow. Initial commit 5095882, pushed to origin/main.
 
 ### 10 — Live-explain script
 Changed one line in README Layout block, adding docs/ next to drizzle/ and worklog/. Level 1 because it documents a directory that now exists — no source, no config, no dependency touched, build and runtime cannot change. Stack is TypeScript on Next.js 16 App Router with React 19, Clerk for auth and organizations, Neon Postgres through Drizzle, Trigger.dev v4 for background runs, Browserbase for the browser, React Flow for canvas, Vitest for tests. Runs as two processes: npm run dev, and npx trigger.dev@latest dev in second terminal.
+
+# test
+This file contains W1D1 - do 2, do 3, do 5, do 6

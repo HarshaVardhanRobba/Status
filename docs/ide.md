@@ -78,3 +78,6 @@ All keys for Clerk, Neon, Trigger.dev, Browserbase, and Liveblocks live in `.env
 which `.gitignore` excludes. The Trigger.dev CLI keeps its own credentials outside the
 repository after `npx trigger.dev@latest dev` authenticates, and the GitHub CLI token is
 in the OS keyring, not on disk in the project.
+
+## test
+This represents W1D1 - do 7
