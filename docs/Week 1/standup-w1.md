@@ -15,3 +15,9 @@
 - **Yesterday:** Wrote docs/slice-map.md, updated docs/ide.md with formatter/linter/test-runner notes, checked Day 1 PR (open, no comments), moved W1D2 work to Status repo.
 - **Today:** Push Level 1 PR to merge-ready, start one-command setup and document it, write docs/ticket-level2.md for a Level 2 task, Linux practice into docs/linux-w1.md, live explain of ticket and Level 1 diff.
 - **Blocker:** None yet.
+
+# Standup - Week 1, Day 5 (2026-09-05)
+
+- **Yesterday:** Wrote docs/pr-002.md and docs/pr-002.diff covering the Level 2 ticket work end to end (Do 1-Do 4), and pulled the Do 4 commit back onto the week_1_day_4 branch.
+- **Today:** Audit docs/sprint-01.md backlog against what actually shipped, merge or leave the Level 2 PR merge-ready, write a retro, a sponsor-readable status update, redo the Day 1 git loop unaided as a red-flag check, research the four Anthropic certifications, Linux log into docs/linux-w1.md.
+- **Blocker:** None yet. Flagging that this branch (week_1_day_5) was cut from an old commit and is missing W1D1-D4 history; left as-is per instruction.

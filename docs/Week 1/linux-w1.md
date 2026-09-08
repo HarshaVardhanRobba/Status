@@ -91,3 +91,67 @@ a850cf3 updated readme
 - `git log -1 --oneline` shows the tip commit, `a850cf3 updated readme`. Since the
   branch was cut from `main` and nothing was committed to it yet, this is still the
   commit `main` points at.
+
+## W1D5 DO 7
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/status-repo (week_1_day_5)
+$ git log --oneline
+48aa887 (HEAD -> week_1_day_5, origin/week_1_day_5) W1D5 - do 6
+e21c718 W1D5 - do 4
+60fe19d W1D5 - do 3
+333831a W1D5 - do 1
+99f9d4f (origin/main, main) Merge pull request #1 from HarshaVardhanRobba/W1D1
+cb147dc (origin/W1D1) Add HELLO to W1D1 -TEST file
+b023fa9 W1D3.md done - need update
+f042092 W1D3 Done except do-5
+0faed0f Move day logs under Week 1 folder
+a530c02 W1D2: standup, slice-map, ide.md, W1D2 task log
+ac5079e W1D1.md added
+4b9e840 docs: note new repository split in README and sprint-01
+5095882 Initial commit: Week 1 D1 Web-base project
+(END)...skipping...
+48aa887 (HEAD -> week_1_day_5, origin/week_1_day_5) W1D5 - do 6
+e21c718 W1D5 - do 4
+60fe19d W1D5 - do 3
+333831a W1D5 - do 1
+99f9d4f (origin/main, main) Merge pull request #1 from HarshaVardhanRobba/W1D1
+cb147dc (origin/W1D1) Add HELLO to W1D1 -TEST file
+b023fa9 W1D3.md done - need update
+f042092 W1D3 Done except do-5
+0faed0f Move day logs under Week 1 folder
+a530c02 W1D2: standup, slice-map, ide.md, W1D2 task log
+ac5079e W1D1.md added
+4b9e840 docs: note new repository split in README and sprint-01
+5095882 Initial commit: Week 1 D1 Web-base project
+~
+~
+(END)...skipping...
+48aa887 (HEAD -> week_1_day_5, origin/week_1_day_5) W1D5 - do 6
+e21c718 W1D5 - do 4
+60fe19d W1D5 - do 3
+333831a W1D5 - do 1
+99f9d4f (origin/main, main) Merge pull request #1 from HarshaVardhanRobba/W1D1
+cb147dc (origin/W1D1) Add HELLO to W1D1 -TEST file
+b023fa9 W1D3.md done - need update
+f042092 W1D3 Done except do-5
+0faed0f Move day logs under Week 1 folder
+a530c02 W1D2: standup, slice-map, ide.md, W1D2 task log
+ac5079e W1D1.md added
+4b9e840 docs: note new repository split in README and sprint-01
+5095882 Initial commit: Week 1 D1 Web-base project
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
