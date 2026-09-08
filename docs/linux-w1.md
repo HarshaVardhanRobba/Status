@@ -91,6 +91,16 @@ a850cf3 updated readme
 - `git log -1 --oneline` shows the tip commit, `a850cf3 updated readme`. Since the
   branch was cut from `main` and nothing was committed to it yet, this is still the
   commit `main` points at.
+
+## Linux W1D3 - Do 5
+
+```console
+$ cp README.md README.md.bak
+$ mv README.md.bak docs/README.md.bak
+$ chmod 644 docs/README.md.bak
+```
+
+
 total 911
 drwxr-xr-x 1 robba 197609      0 Sep  4 11:13 ./
 drwxr-xr-x 1 robba 197609      0 Sep  4 09:51 ../

@@ -46,13 +46,17 @@ cannot reach any workflow.
 
 ## Getting started
 
-### 1. Clone and install
+### 1. Clone and set up
 
 ```bash
-git clone https://github.com/HarshaVardhanRobba/Web-base.git
-cd Web-base
-npm install
+git clone https://github.com/HarshaVardhanRobba/Status.git
+cd Status
+npm run setup
 ```
+
+`npm run setup` runs `npm install`, then creates `.env.local` from `.env.example`
+if it does not already exist. It does not fill in real keys or run migrations for
+you; do both by hand after, per the steps below.
 
 ### 2. Point Trigger.dev at your own project
 
@@ -68,10 +72,11 @@ export default defineConfig({
 })
 ```
 
-### 3. Create `.env.local`
+### 3. Fill in `.env.local`
 
-Create a file named `.env.local` in the repository root. It is gitignored, so
-nothing in it is ever committed. Fill in the values you collected above:
+`npm run setup` already created `.env.local` from `.env.example` in the
+repository root; it is gitignored, so nothing in it is ever committed. Open it
+and fill in the values you collected above:
 
 ```bash
 # Clerk
