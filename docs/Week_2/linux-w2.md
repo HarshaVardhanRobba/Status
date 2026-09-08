@@ -7,7 +7,6 @@ written (glossary.md, sprint-02.md).
 
 ### cat glossary.md
 
-```
 # Glossary
 
 Domain: multi-tenant workflow builder (Next.js + React Flow canvas + Trigger.dev
@@ -30,10 +29,7 @@ way — see sprint-02.md Why.
 | Blocker | Something stopping today's planned work from proceeding, stated in standup. | Not a risk — a Risk is a thing that could go wrong later; a Blocker is already stopping progress right now. |
 | Risk | A known way a backlog item or sprint could go wrong, named in advance. | Not a Blocker — a Risk has not happened yet and may never happen; it is tracked so it is not a surprise if it does. |
 | Tenancy boundary | The guarantee that a query scoped to one Organization's id can never return or modify another Organization's rows. | Not the same as auth/login — a user can be authenticated and still hit a tenancy bug if a query is missing its orgId filter. |
-```
 
-cat dumps whole file to stdout in one shot, no pagination — fine for a
-14-line table, wrong tool for a long log.
 
 ### less -F sprint-02.md (paged)
 
@@ -77,7 +73,7 @@ Solo across all items.
 - First sprint with real velocity data from Week 1, but only one data point.
 - Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
   forgetting it makes runs hang, not fail loudly.
-```
+(END)
 
 ### head -n 8 sprint-02.md (top preview)
 
@@ -104,8 +100,30 @@ Solo across all items.
 - First sprint with real velocity data from Week 1, but only one data point.
 - Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
   forgetting it makes runs hang, not fail loudly.
-```
 
-head/tail confirm same file two ways: head shows Why lands right after the
-title with no preamble, tail shows sprint-wide Risks is the true last
-section, no trailing content after it.
+
+## head -n 8 sprint-02.md
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs/Week_2 (week_2_day_1)
+$ head -n 8 sprint-02.md
+# Sprint 02
+
+## Why
+
+Shared vocabulary needed so first entity in system gets named right, once,
+instead of three different names drifting across code, docs, and standup.
+
+## Process change from Week 1 retro
+
+## tail -n 8 sprint-02.md
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs/Week_2 (week_2_day_1)
+$ tail -n 8 sprint-02.md
+Solo across all items.
+
+## Risks (sprint-wide)
+
+- No second reviewer; wrong assumptions ship unchecked.
+- First sprint with real velocity data from Week 1, but only one data point.
+- Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
+  forgetting it makes runs hang, not fail loudly.
