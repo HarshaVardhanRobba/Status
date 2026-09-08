@@ -1,5 +1,8 @@
 # Retro — Week 1
 
+_W1D5 Do 5 red-flag check: this line proves the Day 1 git loop
+(branch, small change, commit, push, PR) still works standalone._
+
 ## Keep
 
 - Standup pattern (Yesterday/Today/Blocker), same three lines every day,
@@ -41,3 +44,6 @@ prior day's pushed tip is) — never `git checkout -b` off an unchecked
 current HEAD.** Prevents the two branch-base mistakes from this week
 from repeating; costs one extra `git log --oneline -1` to confirm the
 base before cutting the branch.
+
+## test
+This is a test
