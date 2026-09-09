@@ -174,6 +174,23 @@ first node opens the browser, so you can watch the session while it runs.
 | `npm run db:push` | Push the schema straight to the database |
 | `npm run db:studio` | Drizzle Studio |
 | `npx trigger.dev@latest dev` | Trigger.dev dev server, required for any run to execute |
+| `npm run run:workflow` | Print a sample Workflow entity (name, identity, one attribute) |
+
+Run the Workflow sample:
+
+```
+npm run run:workflow
+```
+
+No `.env.local`, database, or second terminal needed — the script builds a
+Workflow value in memory and prints it, it never touches the database.
+Expected output (the id is random each run):
+
+```
+Workflow name: Workflow
+Workflow identity (id): f59f95ff-0e3a-40ca-9b6b-af96ea3d68d1
+Workflow attribute (orgId): Organization
+```
 
 ## Tests
 
