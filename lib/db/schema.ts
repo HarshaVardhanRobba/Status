@@ -19,4 +19,4 @@ export const workflows = pgTable("workflows", {
   updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
 })
 
-export type workflow = typeof workflows.$inferSelect
+export type Workflow = typeof workflows.$inferSelect
