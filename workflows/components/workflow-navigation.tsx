@@ -21,10 +21,10 @@ import {
   SidebarSeparator,
   useSidebar,
 } from "@/components/ui/sidebar"
-import type { workflow } from "@/lib/db/schema"
+import type { Workflow } from "@/lib/db/schema"
 import { generateSlug } from "@/workflows/nameslugs"
 
-function WorkflowMenu({ workflows }: { workflows: workflow[] }) {
+function WorkflowMenu({ workflows }: { workflows: Workflow[] }) {
   const pathname = usePathname()
 
   return (
@@ -50,7 +50,7 @@ export function WorkflowNavigation({
   workflows,
   createWorkflowAction,
 }: {
-  workflows: workflow[]
+  workflows: Workflow[]
   createWorkflowAction: (name: string) => Promise<void>
 }) {
   const { state } = useSidebar()

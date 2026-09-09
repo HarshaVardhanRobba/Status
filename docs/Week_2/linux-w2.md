@@ -127,3 +127,39 @@ Solo across all items.
 - First sprint with real velocity data from Week 1, but only one data point.
 - Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
   forgetting it makes runs hang, not fail loudly.
+
+## W2D2 DO 5
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo (week_2_day_2)
+$ cd docs
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs (week_2_day_2)
+$ mkdir TEST
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs (week_2_day_2)
+$ cd
+
+robba@Harshavardhan MINGW64 ~
+$ cd ~/OneDrive/Desktop/Status/Status-repo
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo (week_2_day_2)
+$ mv docs/pr-w2-entity.md "docs/Week_2/pr-w2-entity.md"
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo (week_2_day_2)
+$ cd docs
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs (week_2_day_2)
+$ cd week_2
+
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs/week_2 (week_2_day_2)
+$ ls -l
+total 29
+-rw-r--r-- 1 robba 197609 1531 Sep  9 11:18 entity-vs-vo.md
+-rw-r--r-- 1 robba 197609 3334 Sep  8 16:31 glossary.md
+-rw-r--r-- 1 robba 197609 7509 Sep  8 16:31 linux-w2.md
+-rw-r--r-- 1 robba 197609 2312 Sep  9 11:23 pr-w2-entity.md
+-rw-r--r-- 1 robba 197609 2205 Sep  8 16:31 sprint-02.md
+-rw-r--r-- 1 robba 197609 2345 Sep  8 17:06 standup-w2.md
+-rw-r--r-- 1 robba 197609   32 Sep  8 16:31 status-w2.md
+
+##
