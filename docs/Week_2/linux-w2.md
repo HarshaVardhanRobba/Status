@@ -162,4 +162,20 @@ total 29
 -rw-r--r-- 1 robba 197609 2345 Sep  8 17:06 standup-w2.md
 -rw-r--r-- 1 robba 197609   32 Sep  8 16:31 status-w2.md
 
-##
+## W2D3 — run the Workflow entry point from the shell
+
+No wrapper script — ran the npm script directly from Git Bash, so chmod +x
+does not apply here (nothing to mark executable, `npm run` invokes node/tsx
+itself).
+
+```
+robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs/week_2 (week_2_day_3)
+$ npm run run:workflow
+
+> web-base@0.0.1 run:workflow
+> tsx scripts/print-workflow.ts
+
+Workflow name: Workflow
+Workflow identity (id): 6b749d6c-4a86-458a-b205-25501dc60fed
+Workflow attribute (orgId): Organization
+```

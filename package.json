@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "setup": "npm install && node scripts/setup-env.mjs",
+    "run:workflow": "tsx scripts/print-workflow.ts",
     "dev": "next dev",
     "prebuild": "node scripts/check-trigger.mjs",
     "build": "next build",

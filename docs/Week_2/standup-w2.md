@@ -26,3 +26,29 @@
 - **Blocker:** Do 4 from W2D1 still open — glossary term alignment with the
   advisor has not happened yet, so the entity's name in #73 is not yet
   confirmed against a second person, just against the glossary doc alone.
+
+# Standup - Week 2, Day 3 (2026-09-09)
+
+- **Yesterday:** Renamed the Workflow entity type to match glossary casing
+  (`workflow` -> `Workflow`, `lib/db/schema.ts`, identity field `id` already
+  explicit) and fixed its one consumer (#73); wrote
+  docs/Week_2/entity-vs-vo.md explaining Workflow is an entity because its
+  `id` survives a rename, and naming WorkflowGraph as the value object to
+  add later, built only from existing glossary terms Node and Edge (#72);
+  no PR opened since the branch is not pushed, wrote
+  docs/Week_2/pr-w2-entity.md instead with the full diff and test plan
+  (#74); ran mkdir/mv/ls -l for real in Git Bash — moved the misplaced
+  pr-w2-entity.md into docs/Week_2/, logged the ls -l permission columns,
+  appended to docs/Week_2/linux-w2.md (#75). Do 4 from W2D1 (advisor and
+  student saying the same glossary terms out loud) still has not happened.
+- **Today:** Build a runnable entry point (CLI command or hello page) that
+  constructs a Workflow and prints at least three glossary terms for it —
+  name, identity, one attribute — no hard-coded strings besides real
+  glossary words; document how to run it in the README, clear enough
+  for a second person with no other help; open a PR, or
+  docs/pr-w2-run.md if not, with the actual program output pasted into the
+  description; run the program from the shell directly, not the IDE
+  run button, and only chmod +x a wrapper script if the shebang line can be
+  explained, output appended to docs/linux-w2.md.
+- **Blocker:** Do 4 from W2D1 still open, now two days carried — needs a
+  real conversation with the advisor, not another doc, before it can close.
