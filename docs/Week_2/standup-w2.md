@@ -52,3 +52,30 @@
   explained, output appended to docs/linux-w2.md.
 - **Blocker:** Do 4 from W2D1 still open, now two days carried — needs a
   real conversation with the advisor, not another doc, before it can close.
+
+# Standup - Week 2, Day 4 (2026-09-10)
+
+- **Yesterday:** Built the runnable entry point,
+  scripts/print-workflow.ts, constructing a Workflow entity typed off the
+  real Drizzle schema and printing three glossary terms — name, identity
+  (id), one attribute (orgId) — with no hardcoded strings besides the
+  glossary words themselves, wired up as `npm run run:workflow` (#81);
+  documented how to run it in the README Scripts section, command plus
+  no-setup-needed note plus expected output (#82); no PR opened, wrote
+  docs/Week_2/pr-w2-run.md instead with both diffs and the actual pasted
+  program output (#83); ran the script from Git Bash directly rather than
+  an IDE run button, no wrapper script so chmod +x did not apply, noted
+  why, output appended to docs/Week_2/linux-w2.md (#84). Do 4 from W2D1
+  still has not happened.
+- **Today:** Write docs/bounded-context.md naming the bounded context
+  against the project glossary, listing what is inside it and explicitly
+  what is outside it (e.g. payroll, marketing site), noting a second
+  bounded context is deferred to Week 8 if it happens at all; write
+  docs/cloud-concepts-w2.md defining IaaS, PaaS, SaaS, region, account, and
+  IAM identity in own words, plus which deployment model is expected by
+  Week 10 or "undecided," without opening three cloud consoles just to
+  write it; hands-on chmod/chown practice on a scratch file in /tmp,
+  explaining why repo files are typically 644/755 not 777, looking into
+  umask if possible, results appended to docs/linux-w2.md.
+- **Blocker:** Do 4 from W2D1 still open, now three days carried — needs a
+  real conversation with the advisor, not another doc, before it can close.
