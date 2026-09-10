@@ -179,3 +179,58 @@ Workflow name: Workflow
 Workflow identity (id): 6b749d6c-4a86-458a-b205-25501dc60fed
 Workflow attribute (orgId): Organization
 ```
+
+## W2D4 — chmod/chown on a scratch file in /tmp
+
+```
+$ cd /tmp && touch permtest.txt && ls -l permtest.txt
+-rw-r--r-- 1 robba 197609 0 Sep 10 13:56 permtest.txt
+
+$ umask
+0022
+
+$ chmod 777 permtest.txt && ls -l permtest.txt
+-rw-r--r-- 1 robba 197609 0 Sep 10 13:56 permtest.txt
+
+$ stat -c '%a %n' permtest.txt
+644 permtest.txt
+
+$ chmod 644 permtest.txt && ls -l permtest.txt
+-rw-r--r-- 1 robba 197609 0 Sep 10 13:56 permtest.txt
+
+$ chown $(whoami) permtest.txt && ls -l permtest.txt
+-rw-r--r-- 1 robba 197609 0 Sep 10 13:56 permtest.txt
+
+$ echo 'echo hi' > permtest.sh && ls -l permtest.sh
+-rw-r--r-- 1 robba 197609 8 Sep 10 13:56 permtest.sh
+
+$ chmod 755 permtest.sh && ls -l permtest.sh
+-rw-r--r-- 1 robba 197609 8 Sep 10 13:56 permtest.sh
+
+$ ./permtest.sh
+hi
+
+$ rm -f permtest.txt permtest.sh
+```
+
+Windows/MSYS finding: `chmod 777` and `chmod 755` did not change the reported
+bits (`stat` still read back 644 after the 777 attempt) — this Git Bash sits
+on NTFS, which does not carry real POSIX permission bits, so chmod/chown here
+is emulated and mostly a no-op. `./permtest.sh` still ran despite `ls -l`
+showing no `x` bit, because MSYS decides "executable" by shebang/extension,
+not the mode bits, on this filesystem. On a real Linux filesystem these same
+commands would actually flip the bits and `./permtest.sh` would fail with
+`Permission denied` until `chmod +x` was run.
+
+Why repo files are 644/755, not 777: 777 grants write to owner, group, and
+everyone else — any other user or process on the box, or a compromised script
+running as another user, could edit or overwrite the file. 644 (`rw-r--r--`)
+lets only the owner write, everyone else read-only; 755 (`rwxr-xr-x`) adds
+the execute/traverse bit needed for directories and scripts without granting
+write. Least privilege: give out exactly the access something needs, never
+"just in case."
+
+`umask 0022` is why new files land at 644 and new directories at 755 instead
+of the raw 666/777 the creating program asked for — umask subtracts those
+bits (`022`) from the requested mode at creation time, so write access for
+group and other is stripped by default before anything opens the file.
