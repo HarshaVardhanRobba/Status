@@ -33,3 +33,28 @@ Solo across all items.
 - First sprint with real velocity data from Week 1, but only one data point.
 - Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
   forgetting it makes runs hang, not fail loudly.
+
+## Review (W2D5, 2026-09-11)
+
+Demoed each done-when against actual code/branch state:
+
+| # | Item | Done-when met? |
+|---|------|-----------------|
+| 1 | First node type ships end to end | No |
+| 2 | Failed run names failing node and error in logs panel | No |
+| 3 | Rename workflow from list, org-scoped | No |
+| 4 | Duplicate workflow copies graph to new row | No |
+| 5 | Tenancy boundary test | No |
+
+0/5 backlog items done-when met. Sprint time instead went to entity naming
+(Workflow entity, entity-vs-vo doc), the glossary, and a runnable entry
+point — none of which were backlog items 1-5.
+
+`npm run run:workflow` (entry point built this sprint, not a backlog item)
+does run and print glossary terms:
+
+```
+Workflow name: Workflow
+Workflow identity (id): 15162512-6d46-4452-9ee6-02c3e2d84cf8
+Workflow attribute (orgId): Organization
+```

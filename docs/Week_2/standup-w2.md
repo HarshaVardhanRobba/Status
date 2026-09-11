@@ -79,3 +79,33 @@
   umask if possible, results appended to docs/linux-w2.md.
 - **Blocker:** Do 4 from W2D1 still open, now three days carried — needs a
   real conversation with the advisor, not another doc, before it can close.
+
+# Standup - Week 2, Day 5 (2026-09-11)
+
+- **Yesterday:** Wrote docs/bounded-context.md naming the one bounded
+  context (Workflow Builder, per docs/Week_2/glossary.md), listing what is
+  inside it (Organization, Workflow, Node, Edge, Executor, Manifest entry,
+  Run, Canvas, Logs panel) and explicitly outside it (payroll/billing, the
+  marketing site, Clerk auth internals), noting a second bounded context is
+  deferred to Week 8 if it happens at all; wrote docs/cloud-concepts-w2.md
+  defining IaaS/PaaS/SaaS and region/account/IAM identity in own words, each
+  tied back to a real piece of this project, deployment model by Week 10
+  leaning PaaS (Vercel + Trigger.dev Cloud) with Railway/Fly.io as an
+  alternative and raw IaaS only if a control need shows up, still
+  undecided which; ran real chmod/chown practice on a scratch file and
+  script in /tmp, appended to docs/Week_2/linux-w2.md, including the
+  finding that this Git Bash sits on NTFS so chmod does not actually flip
+  the reported mode bits, plus why repo files are 644/755 not 777 and how
+  umask 0022 produces those defaults. Do 4 from W2D1 still has not
+  happened.
+- **Today:** Demo every sprint-02 done-when criterion plus `make run`
+  printing the glossary terms, proving Sprint 02 actually works (#97);
+  write docs/retro-w2.md in keep/drop/try format with one process change to
+  carry into Week 3 Day 1 (#98); write docs/status-w2.md for the sponsor —
+  terminology named, what is actually running, what is currently blocked
+  (#99); write docs/cert-nca-genl-skim.md on the NVIDIA-Certified Associate
+  Generative AI LLMs cert, topic list copied from the official cert page
+  (#100); clean up docs/linux-w2.md so pwd/ls/cd/cat/less/head/tail/mkdir/
+  cp/mv/chmod/git each appear only once (#101).
+- **Blocker:** Do 4 from W2D1 still open, now four days carried — needs a
+  real conversation with the advisor, not another doc, before it can close.
