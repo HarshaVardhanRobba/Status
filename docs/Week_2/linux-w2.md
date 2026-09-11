@@ -101,33 +101,6 @@ Solo across all items.
 - Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
   forgetting it makes runs hang, not fail loudly.
 
-
-## head -n 8 sprint-02.md
-
-robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs/Week_2 (week_2_day_1)
-$ head -n 8 sprint-02.md
-# Sprint 02
-
-## Why
-
-Shared vocabulary needed so first entity in system gets named right, once,
-instead of three different names drifting across code, docs, and standup.
-
-## Process change from Week 1 retro
-
-## tail -n 8 sprint-02.md
-
-robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo/docs/Week_2 (week_2_day_1)
-$ tail -n 8 sprint-02.md
-Solo across all items.
-
-## Risks (sprint-wide)
-
-- No second reviewer; wrong assumptions ship unchecked.
-- First sprint with real velocity data from Week 1, but only one data point.
-- Trigger.dev worker requires second terminal (`npx trigger.dev@latest dev`) —
-  forgetting it makes runs hang, not fail loudly.
-
 ## W2D2 DO 5
 
 robba@Harshavardhan MINGW64 ~/OneDrive/Desktop/Status/Status-repo (week_2_day_2)
